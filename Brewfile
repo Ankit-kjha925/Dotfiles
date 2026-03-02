@@ -1,62 +1,59 @@
+i# =========================
+# Taps
+# =========================
 tap "sinelaw/fresh"
 tap "theboredteam/boring-notch"
-# Download with resuming and segmented downloading
-brew "aria2"
-# Console Matrix
-brew "cmatrix"
-# Get a file from an HTTP, HTTPS or FTP server
-brew "curl"
-# Play, record, convert, and stream select audio and video codecs
-brew "ffmpeg"
-# Text editor for your terminal: easy, powerful and fast
-brew "fresh-editor"
-# Command-line fuzzy finder written in Go
-brew "fzf"
-# GNU compiler collection
-brew "gcc"
-# GitHub command-line tool
-brew "gh"
-# Distributed revision control system
+
+# =========================
+# Core Development Tools
+# =========================
 brew "git"
-# GNU grep, egrep and fgrep
-brew "grep"
-# Simple terminal UI for git commands
-brew "lazygit"
-# Open-source, cross-platform JavaScript runtime environment
-brew "node"
-# MongoDB Shell to connect, configure, query, and work with your MongoDB database
-brew "mongosh"
-# Feature-rich command-line audio/video downloader
-brew "yt-dlp"
-# Media player based on MPlayer and mplayer2
-brew "mpv"
-# Fast, highly customisable system info script
-brew "neofetch"
-# Ambitious Vim-fork focused on extensibility and agility
+brew "gh"
 brew "neovim"
-# Terminal multiplexer
 brew "tmux"
-# Display directories as trees (with optional color/HTML output)
+brew "node"
+brew "gcc"
+
+# =========================
+# CLI Utilities
+# =========================
+brew "aria2"
+brew "curl"
+brew "ffmpeg"
+brew "fzf"
+brew "grep"
+brew "lazygit"
+brew "mongosh"
 brew "tree"
-# Shell extension to navigate your filesystem faster
+brew "yt-dlp"
 brew "zoxide"
-# Enable Windows-like alt-tab
-cask "alt-tab"
-# Not so boring notch That Rocks 🎸🎶 
-cask "theboredteam/boring-notch/boring-notch"
-cask "font-meslo-lg-nerd-font"
-# Terminal emulator that uses platform-native UI and GPU acceleration
+brew "neofetch"
+brew "mpv"
+brew "fresh-editor"
+
+# =========================
+# Terminals
+# =========================
 cask "ghostty"
-# Control your tools with a few keystrokes
-cask "raycast"
-# Move and resize windows using keyboard shortcuts or snap areas
-cask "rectangle"
-# System monitor for the menu bar
-cask "stats"
-# Rust-based terminal
-cask "warp"
-# GPU-accelerated cross-platform terminal emulator and multiplexer
 cask "wezterm"
+
+# =========================
+# Fonts
+# =========================
+cask "font-meslo-lg-nerd-font"
+
+# =========================
+# Window Management & UI
+# =========================
+cask "alt-tab"
+cask "rectangle"
+cask "raycast"
+cask "stats"
+cask "theboredteam/boring-notch/boring-notch"
+
+# =========================
+# VSCode Extensions
+# =========================
 vscode "aaron-bond.better-comments"
 vscode "arcticicestudio.nord-visual-studio-code"
 vscode "bradlc.vscode-tailwindcss"
