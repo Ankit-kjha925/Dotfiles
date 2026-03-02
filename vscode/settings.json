@@ -1,0 +1,120 @@
+{
+  "workbench.colorTheme": "Black",
+  "workbench.iconTheme": "glyph.legacy",
+  "window.zoomLevel": 0,
+  "window.titleBarStyle": "custom",
+  "window.commandCenter": false,
+  "workbench.layoutControl.enabled": false,
+  "chat.agentsControl.enabled": false,
+  "workbench.sideBar.location": "right",
+  "workbench.editor.showTabs": "single",
+  "workbench.statusBar.visible": false,
+  "workbench.startupEditor": "none",
+  "workbench.tips.enabled": false,
+  "breadcrumbs.enabled": false,
+  "workbench.editor.labelFormat": "short",
+
+  /* ─────────────────────────────
+      EXPLORER
+  ───────────────────────────── */
+  "material-icon-theme.hidesExplorerArrows": true,
+  "workbench.tree.enableStickyScroll": false,
+  "workbench.tree.renderIndentGuides": "none",
+  "workbench.tree.indent": 8,
+  "explorer.compactFolders": false,
+  "explorer.confirmDragAndDrop": false,
+  "explorer.confirmDelete": false,
+  "explorer.decorations.badges": false,
+  "git.decorations.enabled": false,
+
+  "editor.fontFamily": "JetBrainsMono Nerd Font Mono",
+  "editor.fontSize": 14,
+  "editor.fontLigatures": true,
+  "editor.lineHeight": 1.5,
+  "editor.minimap.enabled": false,
+  "editor.lineNumbers": "relative",
+  "editor.wordWrap": "on",
+  "editor.detectIndentation": false,
+  "editor.matchBrackets": "never",
+  "editor.renderWhitespace": "none",
+  "editor.renderLineHighlight": "none",
+  "editor.guides.indentation": false,
+  "editor.scrollbar.horizontal": "hidden",
+  "editor.scrollbar.vertical": "hidden",
+  "editor.overviewRulerBorder": false,
+  "editor.hideCursorInOverviewRuler": true,
+  "editor.occurrencesHighlight": "off",
+  "editor.selectionHighlight": false,
+  "editor.quickSuggestions": { "other": "off" },
+  "editor.suggestOnTriggerCharacters": false,
+  "editor.tabCompletion": "on",
+  "editor.snippetSuggestions": "top",
+  "editor.stickyScroll.enabled": false,
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+
+  /* Cursor */
+  "editor.multiCursorModifier": "ctrlCmd",
+  "editor.cursorBlinking": "solid",
+  "editor.cursorStyle": "line",
+
+  /* ─────────────────────────────
+      FILES
+  ───────────────────────────── */
+  "files.autoSave": "afterDelay",
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+
+  /* ─────────────────────────────
+      TERMINAL (True Clear)
+  ───────────────────────────── */
+  "terminal.integrated.fontSize": 14,
+  "terminal.integrated.fontFamily": "JetBrainsMono Nerd Font Mono",
+  "terminal.integrated.scrollback": 0,
+  "terminal.integrated.enablePersistentSessions": false,
+  "terminal.integrated.shellIntegration.enabled": true,
+
+  /* ─────────────────────────────
+      GREY BUTTON + WHITE TEXT THEME
+  ───────────────────────────── */
+  "workbench.colorCustomizations": {
+    "button.background": "#1A1A1A",
+    "button.foreground": "#FFFFFF",
+    "button.hoverBackground": "#262626",
+    "button.separator": "#2A2A2A",
+
+    "button.secondaryBackground": "#111111",
+    "button.secondaryForeground": "#FFFFFF",
+    "button.secondaryHoverBackground": "#1E1E1E",
+
+    "checkbox.background": "#1A1A1A",
+    "checkbox.border": "#333333",
+    "checkbox.foreground": "#FFFFFF",
+
+    "input.background": "#111111",
+    "input.foreground": "#FFFFFF",
+    "input.border": "#2A2A2A",
+
+    "dropdown.background": "#111111",
+    "dropdown.foreground": "#FFFFFF",
+    "dropdown.border": "#2A2A2A",
+
+    "editorCursor.background": "#000000",
+  },
+
+  "chat.instructionsFilesLocations": {
+    ".github/instructions": true,
+    ".claude/rules": true,
+    "/var/folders/x7/c04xhcpx3xgfmllr9pjpg96c0000gn/T/postman-collections-post-response.instructions.md": true,
+    "/var/folders/x7/c04xhcpx3xgfmllr9pjpg96c0000gn/T/postman-collections-pre-request.instructions.md": true,
+    "/var/folders/x7/c04xhcpx3xgfmllr9pjpg96c0000gn/T/postman-folder-post-response.instructions.md": true,
+    "/var/folders/x7/c04xhcpx3xgfmllr9pjpg96c0000gn/T/postman-folder-pre-request.instructions.md": true,
+    "/var/folders/x7/c04xhcpx3xgfmllr9pjpg96c0000gn/T/postman-http-request-post-response.instructions.md": true,
+    "/var/folders/x7/c04xhcpx3xgfmllr9pjpg96c0000gn/T/postman-http-request-pre-request.instructions.md": true
+},
+  "editor.renderControlCharacters": false,
+  "workbench.activityBar.location": "hidden",
+  "chat.editor.wordWrap": "on",
+  "terminal.external.linuxExec": "ghostty",
+  "terminal.external.osxExec": "ghostty",
+}
