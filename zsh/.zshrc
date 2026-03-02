@@ -92,6 +92,9 @@ alias ls='ls -GF'
 alias vim='nvim'
 alias c='clear'
 alias tt='tree'
+alias dfpush="cd ~/dotfiles && git add . && git commit -m 'update' && git push"
+alias dfpull="cd ~/dotfiles && git pull"
+alias nvupdate="cd ~/.config/nvim && git pull"
 
 ##### FZF (LAZY INIT) #####
 export FZF_DEFAULT_OPTS="--height=40% --layout=reverse --border"
