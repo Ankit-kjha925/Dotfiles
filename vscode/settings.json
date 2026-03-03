@@ -113,7 +113,6 @@
     "/var/folders/x7/c04xhcpx3xgfmllr9pjpg96c0000gn/T/postman-http-request-pre-request.instructions.md": true,
   },
   "editor.renderControlCharacters": false,
-  "workbench.activityBar.location": "hidden",
   "chat.editor.wordWrap": "on",
   "terminal.external.linuxExec": "ghostty",
   "terminal.external.osxExec": "ghostty",
