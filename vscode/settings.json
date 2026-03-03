@@ -118,4 +118,5 @@
   "terminal.external.osxExec": "ghostty",
   "terminal.integrated.cursorStyle": "underline",
   "git.autofetch": true,
+  "git.enableSmartCommit": true,
 }
