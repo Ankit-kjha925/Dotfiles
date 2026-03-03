@@ -1,5 +1,8 @@
 return {
-  -- Formatter
+
+  -- =========================
+  -- Formatting
+  -- =========================
   {
     "stevearc/conform.nvim",
     opts = {
@@ -8,32 +11,19 @@ return {
         timeout_ms = 500,
       },
       formatters_by_ft = {
-        css = { "prettier" },
-        html = { "prettier" },
-        javascript = { "prettier" },
         lua = { "stylua" },
         python = { "black" },
+        javascript = { "prettier" },
         typescript = { "prettier" },
+        html = { "prettier" },
+        css = { "prettier" },
       },
     },
   },
 
-  -- Disable indent guides
-  {
-    "lukas-reineke/indent-blankline.nvim",
-    enabled = false,
-  },
-
-  -- LSP
-  {
-    "neovim/nvim-lspconfig",
-    config = function()
-      require("nvchad.configs.lspconfig").defaults()
-      require "configs.lspconfig"
-    end,
-  },
-
+  -- =========================
   -- Mason
+  -- =========================
   {
     "williamboman/mason.nvim",
     opts = {
@@ -46,19 +36,44 @@ return {
     },
   },
 
+  -- =========================
   -- ToggleTerm
+  -- =========================
   {
     "akinsho/toggleterm.nvim",
     version = "*",
     config = function()
-      require("toggleterm").setup({
+      require("toggleterm").setup {
         direction = "float",
-        float_opts = { border = "rounded" },
-      })
+        float_opts = {
+          border = "curved",
+        },
+      }
     end,
   },
 
-  -- Harpoon
+  -- =========================
+  -- Oil
+  -- =========================
+  {
+    "stevearc/oil.nvim",
+    config = function()
+      require("oil").setup()
+    end,
+  },
+
+  -- =========================
+  -- Flash
+  -- =========================
+  {
+    "folke/flash.nvim",
+    event = "VeryLazy",
+    opts = {},
+  },
+
+  -- =========================
+  -- Harpoon (v2)
+  -- =========================
   {
     "ThePrimeagen/harpoon",
     branch = "harpoon2",
@@ -68,33 +83,12 @@ return {
     end,
   },
 
-  -- Oil
-  {
-    "stevearc/oil.nvim",
-    config = function()
-      require("oil").setup()
-    end,
-  },
-
-  -- Flash
-  {
-    "folke/flash.nvim",
-    event = "VeryLazy",
-    opts = {},
-  },
-
-  -- Mini Surround
-  {
-    "echasnovski/mini.surround",
-    version = false,
-    config = function()
-      require("mini.surround").setup()
-    end,
-  },
-
-  -- Noice UI
+  -- =========================
+  -- Noice
+  -- =========================
   {
     "folke/noice.nvim",
+    event = "VeryLazy",
     dependencies = {
       "MunifTanjim/nui.nvim",
       "rcarriga/nvim-notify",
@@ -103,4 +97,24 @@ return {
       require("noice").setup()
     end,
   },
+
+  -- =========================
+  -- mini.surround
+  -- =========================
+  {
+    "echasnovski/mini.surround",
+    version = false,
+    config = function()
+      require("mini.surround").setup()
+    end,
+  },
+
+  -- =========================
+  -- Disable indent-blankline
+  -- =========================
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    enabled = false,
+  },
+
 }
