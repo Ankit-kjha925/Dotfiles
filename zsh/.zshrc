@@ -9,13 +9,15 @@ path=(
   $HOME/bin
   /opt/homebrew/bin
   /usr/local/mysql/bin
-  /Users/ankitjha/mongodb-macos-aarch64--8.2.3/bin
+  $HOME/mongodb-macos-aarch64--8.2.3/bin
   $path
 )
 
 ##### BASIC ENV #####
 export HOMEBREW_NO_ENV_HINTS=1
-export JAVA_HOME=$(/usr/libexec/java_home -v 25.0.1)
+export EDITOR="nvim"
+export VISUAL="nvim"
+export JAVA_HOME=$(/usr/libexec/java_home -v 25.0.1 2>/dev/null)
 
 ##### ZINIT (PLUGIN MANAGER) #####
 ZINIT_HOME="$HOME/.local/share/zinit/zinit.git"
@@ -31,24 +33,31 @@ autoload -Uz _zinit
 ##### PLUGINS (FAST → SLOW ORDER) #####
 zinit ice depth=1
 zinit light romkatv/powerlevel10k
-
 zinit light zsh-users/zsh-autosuggestions
 zinit light zdharma-continuum/fast-syntax-highlighting
 zinit light zsh-users/zsh-completions
 zinit light Aloxaf/fzf-tab
 
-##### COMPLETION SYSTEM (CACHED) #####
+##### COMPLETION SYSTEM #####
 autoload -Uz compinit
 compinit -C
+
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+zstyle ':completion:*' list-dirs-first true
+zstyle ':completion:*' special-dirs true
+zstyle ':completion:*' menu select=long
+zstyle ':fzf-tab:*' switch-group '<' '>'
+zstyle ':fzf-tab:*' fzf-command 'fzf --ansi --no-sort'
+zstyle ':fzf-tab:*' accept-line enter
 
 ##### KEYBINDINGS #####
 bindkey -e
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
 bindkey '^R' fzf-history-widget
-bindkey '^[w' kill-region
+bindkey '^[[Z' reverse-menu-complete
 
-##### HISTORY (OPTIMIZED) #####
+##### HISTORY OPTIMIZATION #####
 HISTFILE=~/.zsh_history
 HISTSIZE=5000
 SAVEHIST=5000
@@ -61,63 +70,121 @@ setopt hist_ignore_space
 setopt share_history
 setopt inc_append_history
 
-##### COMPLETION STYLING #####
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
-zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
-zstyle ':completion:*' menu select
-zstyle ':fzf-tab:*' switch-group '<' '>'
-##### COMPLETION BEHAVIOR (ENHANCED) #####
-
-# Prefix-only, case-insensitive matching
-zstyle ':completion:*' matcher-list \
-  'm:{a-zA-Z}={A-Za-z}'
-
-# Enable menu selection and cycling
-zstyle ':completion:*' menu select=long
-
-# Directory-first listing
-zstyle ':completion:*' list-dirs-first true
-zstyle ':completion:*' special-dirs true
-
-# Keybindings for cycling
-bindkey '^I' expand-or-complete
-bindkey '^[[Z' reverse-menu-complete
-
-# fzf-tab behavior
-zstyle ':fzf-tab:*' fzf-command 'fzf --ansi --no-sort'
-zstyle ':fzf-tab:*' accept-line enter
-
 ##### ALIASES #####
-alias ls='ls -GF'
-alias vim='nvim'
-alias c='clear'
-alias tt='tree'
-alias dfpush="cd ~/dotfiles && git add . && git commit -m 'update' && git push"
-alias dfpull="cd ~/dotfiles && git pull"
-alias nvupdate="cd ~/.config/nvim && git pull"
 
-##### FZF (LAZY INIT) #####
+# Core
+alias ls='ls -GF'
+alias ll='ls -lah'
+alias la='ls -A'
+alias c='clear'
+alias vim='nvim'
+alias tt='tree'
+
+# Navigation
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+
+# Git
+alias g='git'
+alias gs='git status -sb'
+alias gl='git log --oneline --graph --decorate'
+alias gd='git diff'
+alias gaa='git add .'
+alias gcm='git commit -m'
+alias gp='git push'
+alias gpl='git pull'
+
+# System
+alias reload='source ~/.zshrc'
+alias path='echo -e ${PATH//:/\\n}'
+alias ports='lsof -i -P -n | grep LISTEN'
+
+##### DOTFILES FUNCTIONS #####
+
+dfpush() {
+  cd ~/dotfiles || return
+  git add .
+  if git diff --cached --quiet; then
+    echo "No changes to commit."
+    return
+  fi
+  git commit -m "${1:-update dotfiles}"
+  git push
+}
+
+dfpull() {
+  cd ~/dotfiles || return
+  git pull
+}
+
+##### NVCHAD UPDATE #####
+nvupdate() {
+  cd ~/.config/nvim || return
+  git pull
+  nvim --headless "+Lazy! sync" +qa
+  echo "NvChad updated."
+}
+
+##### PROJECT HELPERS #####
+mkcd() {
+  [ -z "$1" ] && echo "Usage: mkcd <directory>" && return 1
+  mkdir -p "$1" && cd "$1"
+}
+
+take() {
+  mkcd "$1" && git init
+}
+
+##### GIT CLEANUP #####
+gclean() {
+  git branch --merged | grep -v "\*" | xargs -n 1 git branch -d
+}
+
+##### ARCHIVE EXTRACTOR #####
+extract() {
+  if [ -f "$1" ]; then
+    case "$1" in
+      *.tar.bz2) tar xjf "$1" ;;
+      *.tar.gz)  tar xzf "$1" ;;
+      *.tar.xz)  tar xJf "$1" ;;
+      *.zip)     unzip "$1" ;;
+      *.rar)     unrar x "$1" ;;
+      *.7z)      7z x "$1" ;;
+      *) echo "Cannot extract '$1'" ;;
+    esac
+  else
+    echo "'$1' is not a valid file"
+  fi
+}
+
+##### KILL PORT #####
+killport() {
+  [ -z "$1" ] && echo "Usage: killport <port>" && return 1
+  lsof -ti :"$1" | xargs kill -9 2>/dev/null
+}
+
+##### FZF #####
 export FZF_DEFAULT_OPTS="--height=40% --layout=reverse --border"
 eval "$(fzf --zsh)"
 
-##### ZOXIDE (FAST) #####
+##### ZOXIDE #####
 eval "$(zoxide init zsh)"
 
-##### NVM (LAZY LOAD – BIG SPEED WIN) #####
+##### NVM (LAZY LOAD) #####
 export NVM_DIR="$HOME/.nvm"
 nvm() {
   unset -f nvm
-  source "$NVM_DIR/nvm.sh"
+  [ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
   nvm "$@"
 }
 
-##### CONDA (MANUAL LOAD ONLY) #####
+##### CONDA (MANUAL LOAD) #####
 conda() {
   unset -f conda
-  source /Users/ankitjha/miniforge3/etc/profile.d/conda.sh
+  [ -f "$HOME/miniforge3/etc/profile.d/conda.sh" ] && source "$HOME/miniforge3/etc/profile.d/conda.sh"
   conda "$@"
 }
 
 ##### PROMPT CONFIG #####
 [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
-
