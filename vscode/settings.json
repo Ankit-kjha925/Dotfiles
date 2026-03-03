@@ -117,4 +117,5 @@
   "terminal.external.linuxExec": "ghostty",
   "terminal.external.osxExec": "ghostty",
   "terminal.integrated.cursorStyle": "underline",
+  "git.autofetch": true,
 }
