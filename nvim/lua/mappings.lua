@@ -62,3 +62,15 @@ map("n", "N", "Nzzzv", opts)
 -- KEEP CURSOR CENTERED WHEN SCROLLING
 map("n", "<C-d>", "<C-d>zz", opts)
 map("n", "<C-u>", "<C-u>zz", opts)
+
+-- Harpoon
+local harpoon = require("harpoon")
+local mark = require("harpoon.mark")
+local ui = require("harpoon.ui")
+
+map("n", "<leader>a", mark.add_file, { desc = "Harpoon add file" })
+map("n", "<leader>1", function() ui.nav_file(1) end)
+map("n", "<leader>2", function() ui.nav_file(2) end)
+map("n", "<leader>3", function() ui.nav_file(3) end)
+map("n", "<leader>4", function() ui.nav_file(4) end)
+map("n", "<leader>hh", ui.toggle_quick_menu, { desc = "Harpoon menu" })
