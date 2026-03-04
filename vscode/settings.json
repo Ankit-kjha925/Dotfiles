@@ -110,8 +110,8 @@
     "/var/folders/x7/c04xhcpx3xgfmllr9pjpg96c0000gn/T/postman-folder-post-response.instructions.md": true,
     "/var/folders/x7/c04xhcpx3xgfmllr9pjpg96c0000gn/T/postman-folder-pre-request.instructions.md": true,
     "/var/folders/x7/c04xhcpx3xgfmllr9pjpg96c0000gn/T/postman-http-request-post-response.instructions.md": true,
-    "/var/folders/x7/c04xhcpx3xgfmllr9pjpg96c0000gn/T/postman-http-request-pre-request.instructions.md": true
-},
+    "/var/folders/x7/c04xhcpx3xgfmllr9pjpg96c0000gn/T/postman-http-request-pre-request.instructions.md": true,
+  },
   "editor.renderControlCharacters": false,
   "chat.editor.wordWrap": "on",
   "terminal.external.linuxExec": "ghostty",
@@ -119,4 +119,5 @@
   "terminal.integrated.cursorStyle": "underline",
   "git.autofetch": true,
   "git.enableSmartCommit": true,
+  "git.confirmSync": false,
 }
