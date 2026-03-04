@@ -41,29 +41,28 @@ return {
   -- =========================
   {
     "akinsho/toggleterm.nvim",
-    version = "*",
+    cmd = "ToggleTerm",
     config = function()
-      require("toggleterm").setup {
+      require("toggleterm").setup({
         direction = "float",
-        float_opts = {
-          border = "curved",
-        },
-      }
+        float_opts = { border = "curved" },
+      })
     end,
   },
 
   -- =========================
-  -- Oil
+  -- Oil (file manager)
   -- =========================
   {
     "stevearc/oil.nvim",
+    cmd = "Oil",
     config = function()
       require("oil").setup()
     end,
   },
 
   -- =========================
-  -- Flash
+  -- Flash (fast jump)
   -- =========================
   {
     "folke/flash.nvim",
@@ -72,19 +71,20 @@ return {
   },
 
   -- =========================
-  -- Harpoon (v2)
+  -- Harpoon v2
   -- =========================
   {
     "ThePrimeagen/harpoon",
     branch = "harpoon2",
     dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
-      require("harpoon"):setup()
+      local harpoon = require("harpoon")
+      harpoon:setup()
     end,
   },
 
   -- =========================
-  -- Noice
+  -- Noice UI
   -- =========================
   {
     "folke/noice.nvim",
@@ -93,8 +93,27 @@ return {
       "MunifTanjim/nui.nvim",
       "rcarriga/nvim-notify",
     },
+
     config = function()
-      require("noice").setup()
+      require("noice").setup({
+
+        cmdline = {
+          view = "cmdline_popup",
+          position = { row = "40%", col = "50%" },
+          size = { width = 60, height = "auto" },
+        },
+
+        messages = {
+          view = "mini",
+        },
+
+        presets = {
+          lsp_doc_border = true,
+          command_palette = true,
+          bottom_search = false,
+        },
+
+      })
     end,
   },
 
@@ -110,7 +129,7 @@ return {
   },
 
   -- =========================
-  -- Disable indent-blankline
+  -- Disable indent guides
   -- =========================
   {
     "lukas-reineke/indent-blankline.nvim",

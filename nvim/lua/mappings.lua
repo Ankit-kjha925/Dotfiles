@@ -1,5 +1,15 @@
+require "nvchad.mappings"
+
 local map = vim.keymap.set
 local opts = { noremap = true, silent = true }
+
+map("n", ";", ":", { desc = "Command mode", noremap = true })
+
+-- exit terminal with ESC
+map("t", "<Esc>", [[<C-\><C-n>]], { desc = "Exit terminal mode" })
+
+-- exit insert mode
+map("i", "jk", "<ESC>", opts)
 
 -- =========================
 -- SMART SPLIT NAVIGATION (tmux friendly)
@@ -8,6 +18,12 @@ map("n", "<C-h>", "<C-w>h", opts)
 map("n", "<C-j>", "<C-w>j", opts)
 map("n", "<C-k>", "<C-w>k", opts)
 map("n", "<C-l>", "<C-w>l", opts)
+
+-- TERMINAL NAVIGATION
+map("t", "<C-h>", [[<Cmd>wincmd h<CR>]], opts)
+map("t", "<C-j>", [[<Cmd>wincmd j<CR>]], opts)
+map("t", "<C-k>", [[<Cmd>wincmd k<CR>]], opts)
+map("t", "<C-l>", [[<Cmd>wincmd l<CR>]], opts)
 
 -- =========================
 -- SAVE / QUIT
