@@ -9,7 +9,7 @@ map("n", ";", ":", { desc = "Command mode", noremap = true })
 map("t", "<Esc>", [[<C-\><C-n>]], { desc = "Exit terminal mode" })
 
 -- exit insert mode
-map("i", "jk", "<ESC>", opts)
+map({ "i", "v", "s" }, "jk", "<ESC>", { desc = "Exit mode" })
 
 -- =========================
 -- SMART SPLIT NAVIGATION (tmux friendly)
@@ -20,8 +20,6 @@ map("n", "<C-k>", "<C-w>k", opts)
 map("n", "<C-l>", "<C-w>l", opts)
 
 -- TERMINAL NAVIGATION
-map("t", "<C-h>", [[<Cmd>wincmd h<CR>]], opts)
-map("t", "<C-j>", [[<Cmd>wincmd j<CR>]], opts)
 map("t", "<C-k>", [[<Cmd>wincmd k<CR>]], opts)
 map("t", "<C-l>", [[<Cmd>wincmd l<CR>]], opts)
 

@@ -105,13 +105,15 @@
   "chat.instructionsFilesLocations": {
     ".github/instructions": true,
     ".claude/rules": true,
+    "~/.copilot/instructions": true,
+    "~/.claude/rules": true,
     "/var/folders/x7/c04xhcpx3xgfmllr9pjpg96c0000gn/T/postman-collections-post-response.instructions.md": true,
     "/var/folders/x7/c04xhcpx3xgfmllr9pjpg96c0000gn/T/postman-collections-pre-request.instructions.md": true,
     "/var/folders/x7/c04xhcpx3xgfmllr9pjpg96c0000gn/T/postman-folder-post-response.instructions.md": true,
     "/var/folders/x7/c04xhcpx3xgfmllr9pjpg96c0000gn/T/postman-folder-pre-request.instructions.md": true,
     "/var/folders/x7/c04xhcpx3xgfmllr9pjpg96c0000gn/T/postman-http-request-post-response.instructions.md": true,
-    "/var/folders/x7/c04xhcpx3xgfmllr9pjpg96c0000gn/T/postman-http-request-pre-request.instructions.md": true,
-  },
+    "/var/folders/x7/c04xhcpx3xgfmllr9pjpg96c0000gn/T/postman-http-request-pre-request.instructions.md": true
+},
   "editor.renderControlCharacters": false,
   "chat.editor.wordWrap": "on",
   "terminal.external.linuxExec": "ghostty",

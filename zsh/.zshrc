@@ -14,6 +14,7 @@ path=(
 )
 
 ##### BASIC ENV #####
+export HOMEBREW_NO_AUTO_UPDATE=1
 export HOMEBREW_NO_ENV_HINTS=1
 export EDITOR="nvim"
 export VISUAL="nvim"
@@ -21,21 +22,23 @@ export JAVA_HOME=$(/usr/libexec/java_home -v 25.0.1 2>/dev/null)
 
 ##### ZINIT (PLUGIN MANAGER) #####
 ZINIT_HOME="$HOME/.local/share/zinit/zinit.git"
+
 if [[ ! -f $ZINIT_HOME/zinit.zsh ]]; then
   mkdir -p "$ZINIT_HOME:h"
   git clone https://github.com/zdharma-continuum/zinit "$ZINIT_HOME"
 fi
 
 source "$ZINIT_HOME/zinit.zsh"
-autoload -Uz _zinit
-(( ${+_comps} )) && _comps[zinit]=_zinit
 
-##### PLUGINS (FAST → SLOW ORDER) #####
+##### PLUGINS #####
 zinit ice depth=1
-zinit light romkatv/powerlevel10k
+# zinit light romkatv/powerlevel10k
+
 zinit light zsh-users/zsh-autosuggestions
 zinit light zdharma-continuum/fast-syntax-highlighting
 zinit light zsh-users/zsh-completions
+
+# better tab completion UI
 zinit light Aloxaf/fzf-tab
 
 ##### COMPLETION SYSTEM #####
@@ -45,16 +48,24 @@ compinit -C
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 zstyle ':completion:*' list-dirs-first true
 zstyle ':completion:*' special-dirs true
-zstyle ':completion:*' menu select=long
+zstyle ':completion:*' menu select
+zstyle ':completion:*' group-name ''
+
+# fzf-tab settings
 zstyle ':fzf-tab:*' switch-group '<' '>'
 zstyle ':fzf-tab:*' fzf-command 'fzf --ansi --no-sort'
 zstyle ':fzf-tab:*' accept-line enter
 
 ##### KEYBINDINGS #####
 bindkey -e
+
+# history search
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
 bindkey '^R' fzf-history-widget
+
+# tab navigation
+bindkey '^I' expand-or-complete
 bindkey '^[[Z' reverse-menu-complete
 
 ##### HISTORY OPTIMIZATION #####
@@ -73,9 +84,11 @@ setopt inc_append_history
 ##### ALIASES #####
 
 # Core
-alias ls='ls -GF'
-alias ll='ls -lah'
-alias la='ls -A'
+alias ls="eza --icons=always"
+alias ll="eza -lah --icons=always --git"
+alias la="eza -a --icons=always"
+alias tree="eza --tree --icons=always"
+
 alias c='clear'
 alias vim='nvim'
 alias tt='tree'
@@ -99,6 +112,7 @@ alias gpl='git pull'
 alias reload='source ~/.zshrc'
 alias path='echo -e ${PATH//:/\\n}'
 alias ports='lsof -i -P -n | grep LISTEN'
+alias brewup="brew update && brew upgrade && brew cleanup"
 
 ##### DOTFILES FUNCTIONS #####
 
@@ -128,7 +142,7 @@ nvupdate() {
 
 ##### PROJECT HELPERS #####
 mkcd() {
-  [ -z "$1" ] && echo "Usage: mkcd <directory>" && return 1
+  [[ -z "$1" ]] && echo "Usage: mkcd <directory>" && return 1
   mkdir -p "$1" && cd "$1"
 }
 
@@ -143,7 +157,7 @@ gclean() {
 
 ##### ARCHIVE EXTRACTOR #####
 extract() {
-  if [ -f "$1" ]; then
+  if [[ -f "$1" ]]; then
     case "$1" in
       *.tar.bz2) tar xjf "$1" ;;
       *.tar.gz)  tar xzf "$1" ;;
@@ -160,13 +174,22 @@ extract() {
 
 ##### KILL PORT #####
 killport() {
-  [ -z "$1" ] && echo "Usage: killport <port>" && return 1
+  [[ -z "$1" ]] && echo "Usage: killport <port>" && return 1
   lsof -ti :"$1" | xargs kill -9 2>/dev/null
 }
 
 ##### FZF #####
 export FZF_DEFAULT_OPTS="--height=40% --layout=reverse --border"
+
+# use fd for faster search
+export FZF_DEFAULT_COMMAND='fd --hidden --strip-cwd-prefix --exclude .git'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
+
 eval "$(fzf --zsh)"
+
+##### BAT #####
+export BAT_THEME="tokyonight_night"
 
 ##### ZOXIDE #####
 eval "$(zoxide init zsh)"
@@ -175,16 +198,19 @@ eval "$(zoxide init zsh)"
 export NVM_DIR="$HOME/.nvm"
 nvm() {
   unset -f nvm
-  [ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
+  [[ -s "$NVM_DIR/nvm.sh" ]] && source "$NVM_DIR/nvm.sh"
   nvm "$@"
 }
 
 ##### CONDA (MANUAL LOAD) #####
 conda() {
   unset -f conda
-  [ -f "$HOME/miniforge3/etc/profile.d/conda.sh" ] && source "$HOME/miniforge3/etc/profile.d/conda.sh"
+  [[ -f "$HOME/miniforge3/etc/profile.d/conda.sh" ]] && source "$HOME/miniforge3/etc/profile.d/conda.sh"
   conda "$@"
 }
 
 ##### PROMPT CONFIG #####
-[[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
+# [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
+
+# Starship PROMPT
+eval "$(starship init zsh)"

@@ -1,31 +1,30 @@
 require "nvchad.options"
 
--- add yours here!
-
 local opt = vim.opt
 
-opt.shortmess:append("y")
-
+-- line numbers
 opt.number = true
 opt.relativenumber = true
 
+-- cursor
 opt.cursorline = true
 opt.cursorlineopt = "both"
 
+-- scrolling
 opt.scrolloff = 10
 opt.sidescrolloff = 10
 
+-- performance
 opt.updatetime = 300
 opt.timeoutlen = 400
 
+-- misc
 opt.confirm = true
 opt.wrap = false
 
-opt.signcolumn = "yes"
-opt.clipboard = "unnamedplus"
-
-opt.shortmess:append("c")
-opt.shortmess:append("s")
-opt.shortmess:append("I")
-opt.shortmess:append("W")
-opt.shortmess:append("y")
+-- reduce message spam
+--vim.opt.shortmess:append("c")
+--vim.opt.shortmess:append("s")
+--vim.opt.shortmess:append("I")
+--vim.opt.shortmess:append("W")
+--vim.opt.shortmess:append("y")

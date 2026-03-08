@@ -95,6 +95,12 @@ return {
     },
 
     config = function()
+      require("notify").setup({
+        timeout = 1200,
+        max_width = 50,
+        max_height = 5
+      })
+
       require("noice").setup({
 
         cmdline = {
