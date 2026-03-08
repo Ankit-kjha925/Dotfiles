@@ -14,10 +14,10 @@ map({ "i", "v", "s" }, "jk", "<ESC>", { desc = "Exit mode" })
 -- =========================
 -- SMART SPLIT NAVIGATION (tmux friendly)
 -- =========================
-map("n", "<C-h>", "<C-w>h", opts)
-map("n", "<C-j>", "<C-w>j", opts)
-map("n", "<C-k>", "<C-w>k", opts)
-map("n", "<C-l>", "<C-w>l", opts)
+map("n", "<C-h>", "<cmd>TmuxNavigateLeft<CR>", opts)
+map("n", "<C-j>", "<cmd>TmuxNavigateDown<CR>", opts)
+map("n", "<C-k>", "<cmd>TmuxNavigateUp<CR>", opts)
+map("n", "<C-l>", "<cmd>TmuxNavigateRight<CR>", opts)
 
 -- TERMINAL NAVIGATION
 map("t", "<C-k>", [[<Cmd>wincmd k<CR>]], opts)

@@ -22,9 +22,3 @@ opt.timeoutlen = 400
 opt.confirm = true
 opt.wrap = false
 
--- reduce message spam
---vim.opt.shortmess:append("c")
---vim.opt.shortmess:append("s")
---vim.opt.shortmess:append("I")
---vim.opt.shortmess:append("W")
---vim.opt.shortmess:append("y")

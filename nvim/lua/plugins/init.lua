@@ -1,6 +1,14 @@
 return {
 
   -- =========================
+  -- vim-tmux-navigator
+  -- =========================
+  {
+    "christoomey/vim-tmux-navigator",
+    lazy = false,
+  },
+
+  -- =========================
   -- Formatting
   -- =========================
   {
@@ -42,27 +50,23 @@ return {
   {
     "akinsho/toggleterm.nvim",
     cmd = "ToggleTerm",
-    config = function()
-      require("toggleterm").setup({
-        direction = "float",
-        float_opts = { border = "curved" },
-      })
-    end,
+    opts = {
+      direction = "float",
+      float_opts = { border = "curved" },
+    },
   },
 
   -- =========================
-  -- Oil (file manager)
+  -- Oil
   -- =========================
   {
     "stevearc/oil.nvim",
     cmd = "Oil",
-    config = function()
-      require("oil").setup()
-    end,
+    opts = {},
   },
 
   -- =========================
-  -- Flash (fast jump)
+  -- Flash
   -- =========================
   {
     "folke/flash.nvim",
@@ -78,13 +82,12 @@ return {
     branch = "harpoon2",
     dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
-      local harpoon = require("harpoon")
-      harpoon:setup()
+      require("harpoon"):setup()
     end,
   },
 
   -- =========================
-  -- Noice UI
+  -- Noice
   -- =========================
   {
     "folke/noice.nvim",
@@ -94,33 +97,23 @@ return {
       "rcarriga/nvim-notify",
     },
 
-    config = function()
-      require("notify").setup({
-        timeout = 1200,
-        max_width = 50,
-        max_height = 5
-      })
+    opts = {
+      cmdline = {
+        view = "cmdline_popup",
+        position = { row = "40%", col = "50%" },
+        size = { width = 60, height = "auto" },
+      },
 
-      require("noice").setup({
+      messages = {
+        view = "mini",
+      },
 
-        cmdline = {
-          view = "cmdline_popup",
-          position = { row = "40%", col = "50%" },
-          size = { width = 60, height = "auto" },
-        },
-
-        messages = {
-          view = "mini",
-        },
-
-        presets = {
-          lsp_doc_border = true,
-          command_palette = true,
-          bottom_search = false,
-        },
-
-      })
-    end,
+      presets = {
+        lsp_doc_border = true,
+        command_palette = true,
+        bottom_search = false,
+      },
+    },
   },
 
   -- =========================
@@ -129,9 +122,7 @@ return {
   {
     "echasnovski/mini.surround",
     version = false,
-    config = function()
-      require("mini.surround").setup()
-    end,
+    opts = {},
   },
 
   -- =========================

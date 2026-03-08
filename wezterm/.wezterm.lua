@@ -43,27 +43,71 @@ config.keys = {
     mods = "CMD|SHIFT",
     action = wezterm.action.SplitVertical { domain = "CurrentPaneDomain" },
   },
-  -- Pane Navigation
+  config.keys = {
+
+  -- splits (tmux style)
   {
-    key = "LeftArrow",
-    mods = "CMD",
+    key = "|",
+    mods = "SHIFT",
+    action = wezterm.action.SplitHorizontal { domain = "CurrentPaneDomain" },
+  },
+
+  {
+    key = "-",
+    mods = "NONE",
+    action = wezterm.action.SplitVertical { domain = "CurrentPaneDomain" },
+  },
+
+  -- navigation
+  {
+    key = "h",
+    mods = "CTRL",
     action = wezterm.action.ActivatePaneDirection "Left",
   },
+
   {
-    key = "RightArrow",
-    mods = "CMD",
-    action = wezterm.action.ActivatePaneDirection "Right",
-  },
-  {
-    key = "UpArrow",
-    mods = "CMD",
-    action = wezterm.action.ActivatePaneDirection "Up",
-  },
-  {
-    key = "DownArrow",
-    mods = "CMD",
+    key = "j",
+    mods = "CTRL",
     action = wezterm.action.ActivatePaneDirection "Down",
   },
+
+  {
+    key = "k",
+    mods = "CTRL",
+    action = wezterm.action.ActivatePaneDirection "Up",
+  },
+
+  {
+    key = "l",
+    mods = "CTRL",
+    action = wezterm.action.ActivatePaneDirection "Right",
+  },
+
+  -- resizing
+  {
+    key = "H",
+    mods = "SHIFT",
+    action = wezterm.action.AdjustPaneSize { "Left", 5 },
+  },
+
+  {
+    key = "J",
+    mods = "SHIFT",
+    action = wezterm.action.AdjustPaneSize { "Down", 5 },
+  },
+
+  {
+    key = "K",
+    mods = "SHIFT",
+    action = wezterm.action.AdjustPaneSize { "Up", 5 },
+  },
+
+  {
+    key = "L",
+    mods = "SHIFT",
+    action = wezterm.action.AdjustPaneSize { "Right", 5 },
+  },
+
 }
 
 return config
