@@ -11,4 +11,4 @@ local servers = {
 }
 
 vim.lsp.enable(servers)
-
+vim.lsp.handlers["$/progress"] = function() end
