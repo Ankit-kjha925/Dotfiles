@@ -2,6 +2,13 @@ require "nvchad.options"
 
 local opt = vim.opt
 
+-- general
+opt.wrap = true
+opt.linebreak = true
+opt.breakindent = true
+opt.showbreak = "↪"
+opt.scrolloff = 10
+
 -- line numbers
 opt.number = true
 opt.relativenumber = true
@@ -10,15 +17,11 @@ opt.relativenumber = true
 opt.cursorline = true
 opt.cursorlineopt = "both"
 
--- scrolling
-opt.scrolloff = 10
-opt.sidescrolloff = 10
-
 -- performance
 opt.updatetime = 300
 opt.timeoutlen = 400
 
 -- misc
 opt.confirm = true
-opt.wrap = false
+
 

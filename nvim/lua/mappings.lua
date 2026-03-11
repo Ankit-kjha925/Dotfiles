@@ -4,7 +4,8 @@ local map = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
 map("n", ";", ":", { desc = "Command mode", noremap = true })
-
+map("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+map("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 -- exit terminal with ESC
 map("t", "<Esc>", [[<C-\><C-n>]], { desc = "Exit terminal mode" })
 

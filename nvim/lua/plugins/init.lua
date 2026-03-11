@@ -166,5 +166,15 @@ return {
     "lukas-reineke/indent-blankline.nvim",
     enabled = false,
   },
-
+    {
+    "karb94/neoscroll.nvim",
+    config = function()
+      require("neoscroll").setup({
+        easing_function = "quadratic",
+        hide_cursor = true,
+        stop_eof = true,
+      })
+    end,
+  },
 }
+

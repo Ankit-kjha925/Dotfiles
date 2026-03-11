@@ -9,17 +9,7 @@ local M = {}
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
--- detect terminal
---local term = vim.env.WEZTERM_EXECUTABLE ~= nil
---local is_ghostty = vim.env.GHOSTTY_RESOURCES_DIR ~= nil
-
 local theme = "tokyonight"
-
---if term == "WezTerm" then
-  --theme = "tokyonight"
---elseif is_ghostty then
-  --theme = "tokyonight"
---end
 
 M.base46 = {
   theme = theme,
