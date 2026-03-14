@@ -32,7 +32,7 @@ source "$ZINIT_HOME/zinit.zsh"
 
 ##### PLUGINS #####
 zinit ice depth=1
-zinit light romkatv/powerlevel10k
+# zinit light romkatv/powerlevel10k
 
 zinit light zsh-users/zsh-autosuggestions
 zinit light zdharma-continuum/fast-syntax-highlighting
@@ -210,7 +210,7 @@ conda() {
 }
 
 ##### PROMPT CONFIG #####
-[[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
+# [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
 
 # Starship PROMPT
-# eval "$(starship init zsh)"
+eval "$(starship init zsh)"
