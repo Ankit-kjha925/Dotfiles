@@ -1,4 +1,4 @@
-require("sethy.core")
-require("sethy.lazy")
+require("custom.core")
+require("custom.lazy")
 require("current-theme")
-require("sethy.terminalpop")
+require("custom.terminalpop")
