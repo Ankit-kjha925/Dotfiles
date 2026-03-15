@@ -38,11 +38,11 @@ truncation_length = 4
 "Pictures" = " "
 "Developer" = "󰲋 "
 "Others" = " "
-"dotfiles" = "󰘦 "
-"nvim" = " "
-"config" = " "
-"projects" = "󰏗 "
-"scripts" = "󰯃 "
+# "dotfiles" = "󰘦 "
+# "nvim" = " "
+# "config" = " "
+# "projects" = "󰏗 "
+# "scripts" = "󰯃 "
 
 [username]
 disabled = true
