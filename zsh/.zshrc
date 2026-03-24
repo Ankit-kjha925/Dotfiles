@@ -89,9 +89,15 @@ alias ll="eza -lah --icons=always --git"
 alias la="eza -a --icons=always"
 alias tree="eza --tree --icons=always"
 
+alias chad="NVIM_APPNAME=nvim nvim"
+alias alt="NVIM_APPNAME=nvim-alt nvim"
+
 alias c='clear'
 alias vim='nvim'
 alias tt='tree'
+
+# alias python=python3
+# alias pip=pip3
 
 # Navigation
 alias ..='cd ..'

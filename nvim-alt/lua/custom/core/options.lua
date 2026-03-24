@@ -3,8 +3,13 @@
 -- vim.cmd("let g:netrw_liststyle = 3")
 -- Disable netrw banner
 vim.cmd("let g:netrw_banner = 0")
-
+vim.opt.fillchars = { eob = " " }
 vim.opt.termguicolors = true
+
+-- global status line
+vim.opt.laststatus = 3
+vim.opt.showmode = false
+
 -- line numbers
 vim.opt.nu = true
 vim.opt.relativenumber = true

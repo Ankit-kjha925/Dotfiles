@@ -67,7 +67,7 @@ return {
                         }
                     },
                     telescope = {
-                        reverse = true, -- set to false for search bar to be on top 
+                        reverse = true, -- set to false for search bar to be on top
                         layout = {
                             box = "horizontal",
                             backdrop = false,
@@ -128,22 +128,13 @@ return {
                 img_dirs = { "img", "images", "assets", "static", "public", "media", "attachments","Archives/All-Vault-Images/", "~/Library", "~/Downloads" },
             },
             dashboard = {
-                enabled = true,
-                sections = {
-                    { section = "header" },
-                    { section = "keys", gap = 1, padding = 1 },
-                    { section = "startup" },
-                    {
-                        section = "terminal",
-                        cmd = "ascii-image-converter ~/Desktop/Others/profile.png -C -c",
-                        random = 15,
-                        pane = 2,
-                        indent = 15,
-                        height = 20,
-                    },
-                },
-            },
-        },
+    enabled = true,
+    sections = {
+        { section = "header" },
+        { section = "keys", gap = 1, padding = 1 },
+        { section = "startup" },
+    },
+},        },
         -- NOTE: Keymaps
         keys = {
             { "<leader>lg", function() require("snacks").lazygit() end, desc = "Lazygit" },

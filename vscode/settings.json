@@ -122,4 +122,7 @@
   "git.autofetch": true,
   "git.enableSmartCommit": true,
   "git.confirmSync": false,
+  "python.analysis.typeCheckingMode": "standard",
+  "python.createEnvironment.trigger": "off",
+  "window.confirmSaveUntitledWorkspace": false,
 }
